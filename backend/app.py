@@ -34,3 +34,24 @@ def create_assessment(payload: schemas.AssessmentIn, session: Session = Depends(
 def list_assessments(session: Session = Depends(get_db)):
     return session.query(models.Assessment).order_by(models.Assessment.due_date).all()
 
+@app.get("/assessments/{aid}", response_model=schemas.AssessmentOut)
+def get_assessment(aid: int, session: Session = Depends(get_db)):
+    obj = session.get(models.Assessment, aid)
+    if not obj: raise HTTPException(404, "Assessment not found")
+    return obj
+
+@app.put("/assessments/{aid}", response_model=schemas.AssessmentOut)
+def update_assessment(aid: int, payload: schemas.AssessmentUpdate, session: Session = Depends(get_db)):
+    obj = session.get(models.Assessment, aid)
+    if not obj: raise HTTPException(404, "Assessment not found")
+    for k, v in payload.dict(exclude_unset=True).items():
+        setattr(obj, k, v)
+    session.commit(); session.refresh(obj); return obj
+
+@app.delete("/assessments/{aid}")
+def delete_assessment(aid: int, session: Session = Depends(get_db)):
+    obj = session.get(models.Assessment, aid)
+    if not obj: raise HTTPException(404, "Assessment not found")
+    session.delete(obj); session.commit(); return {"ok": True}
+
+

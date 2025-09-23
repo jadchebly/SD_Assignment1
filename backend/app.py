@@ -29,3 +29,8 @@ def create_assessment(payload: schemas.AssessmentIn, session: Session = Depends(
     session.commit()
     session.refresh(obj)
     return obj
+
+@app.get("/assessments", response_model=list[schemas.AssessmentOut])
+def list_assessments(session: Session = Depends(get_db)):
+    return session.query(models.Assessment).order_by(models.Assessment.due_date).all()
+

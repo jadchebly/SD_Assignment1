@@ -21,3 +21,11 @@ def get_db():
         yield session
     finally:
         session.close()
+
+@app.post("/assessments", response_model=schemas.AssessmentOut)
+def create_assessment(payload: schemas.AssessmentIn, session: Session = Depends(get_db)):
+    obj = models.Assessment(**payload.dict())
+    session.add(obj)
+    session.commit()
+    session.refresh(obj)
+    return obj

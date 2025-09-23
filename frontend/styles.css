@@ -1,0 +1,9 @@
+body { font-family: system-ui, sans-serif; max-width: 900px; margin: 2rem auto; padding: 0 1rem; }
+section { margin: 1rem 0; }
+input { margin-right: .5rem; padding: .4rem .5rem; }
+button { cursor: pointer; padding: .45rem .7rem; }
+#stats { display: grid; grid-template-columns: 1fr 1fr; gap: .5rem 1rem; align-items: center; }
+#weightsMsg { grid-column: 1 / -1; font-size: .9rem; color: #444; }
+table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
+th, td { border-bottom: 1px solid #ddd; padding: .5rem; text-align: left; }
+tr:hover { background: #fafafa; }

@@ -19,4 +19,4 @@ class AssessmentUpdate(BaseModel):
 class AssessmentOut(AssessmentBase):
     id: int
     class Config:
-        from_attributes = True
+        orm_mode = True

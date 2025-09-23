@@ -20,3 +20,18 @@ class AssessmentOut(AssessmentBase):
     id: int
     class Config:
         orm_mode = True
+
+class CurrentStats(BaseModel):
+    current_weighted: float
+    weight_done: float
+    remaining_weight: float
+
+class WhatIf(BaseModel):
+    target: float
+    required_avg: Optional[float]
+    attainable: bool
+
+class Validation(BaseModel):
+    total_weight: float
+    is_exactly_100: bool
+    message: str

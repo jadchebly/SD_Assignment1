@@ -106,3 +106,4 @@ els.calcBtn.onclick = async () => {
 };
 
 load();
+

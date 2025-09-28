@@ -27,7 +27,7 @@ def get_db():
         session.close()
 
 
-@app.get("/health")
+@app.get("/")
 def health():
     return {"ok": True}
 
@@ -94,3 +94,4 @@ def what_if(target: float, session: Session = Depends(get_db)):
 def validate_weights(session: Session = Depends(get_db)):
     rows = session.query(models.Assessment).all()
     return calculations.validate_weights(rows)
+

@@ -17,6 +17,7 @@ pip install -r requirements.txt
 uvicorn backend.app:app --reload
 
 ## Run Frontend
+cd frontend
 python3 -m http.server 5500
 
 

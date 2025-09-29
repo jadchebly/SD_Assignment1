@@ -7,5 +7,7 @@ button { cursor: pointer; padding: .45rem .7rem; }
 table { width: 100%; border-collapse: collapse; margin-top: 1rem; }
 th, td { border-bottom: 1px solid #ddd; padding: .5rem; text-align: left; }
 tr:hover { background: #fafafa; }
+#cancel-edit { margin-left: .5rem; opacity: .85; }
+
 
 

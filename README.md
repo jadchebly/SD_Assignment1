@@ -16,10 +16,5 @@ pip install -r requirements.txt
 cd ..
 uvicorn backend.app:app --reload
 
-## Run Frontend
-cd frontend
-python3 -m http.server 5500
-
-
 Open 
-http://127.0.0.1:5500/
+http://127.0.0.1:8000/

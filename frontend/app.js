@@ -1,6 +1,7 @@
 // --- API base: use localhost to avoid IPv4/IPv6 mismatches ---
-const API = "http://localhost:8000";
-console.log("app.js loaded: edit-support v2");
+const API = ""; // same-origin (e.g., /assessments, /stats/current)
+console.log("app.js v3; API base:", API || "(same-origin)");
+
 
 // --- Grab elements explicitly (no relying on globals) ---
 const els = {
@@ -89,6 +90,15 @@ async function load() {
     `;
     els.tableBody.appendChild(tr);
   });
+
+    // Empty state
+  if (rows.length === 0) {
+    const tr = document.createElement("tr");
+    tr.className = "empty";
+    tr.innerHTML = `<td colspan="5">No assessments yet — add your first one above ✨</td>`;
+    els.tableBody.appendChild(tr);
+  }
+
 
   // Stats
   const stats = await fetchJSON(`${API}/stats/current`);

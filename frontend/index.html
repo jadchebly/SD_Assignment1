@@ -11,10 +11,11 @@
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <main class="container">
   <h1>Grade &amp; What-If Tracker</h1>
 
   <!-- Assessment form -->
-  <section aria-labelledby="add-edit">
+  <section class="card" aria-labelledby="add-edit">
     <h2 id="add-edit" class="sr-only">Add or Update an Assessment</h2>
     <div id="form" role="form" aria-describedby="form-hint">
       <label>
@@ -46,7 +47,7 @@
   </section>
 
   <!-- Stats -->
-  <section aria-labelledby="stats-title" id="stats">
+  <section class="card" aria-labelledby="stats-title" id="stats">
     <h2 id="stats-title" class="sr-only">Current Stats</h2>
     <div>Current: <span id="current">0.00</span>%</div>
     <div>Remaining weight: <span id="remaining">100.00</span>%</div>
@@ -54,7 +55,7 @@
   </section>
 
   <!-- What-if -->
-  <section aria-labelledby="whatif-title" id="whatif">
+  <section class="card" aria-labelledby="whatif-title" id="whatif">
     <h2 id="whatif-title" class="sr-only">What-If Calculator</h2>
     <label>
       Target %
@@ -66,7 +67,7 @@
   </section>
 
   <!-- Table -->
-  <section aria-labelledby="assessments-title">
+  <section class="card" aria-labelledby="assessments-title">
     <h2 id="assessments-title" class="sr-only">Assessments</h2>
     <table id="table" role="table">
       <thead>
@@ -98,6 +99,7 @@
     .hint { font-size: .9rem; color: #555; }
     #form label { display: inline-flex; flex-direction: column; margin-right: .75rem; margin-bottom: .5rem; }
   </style>
+  </main>
 </body>
 </html>
 

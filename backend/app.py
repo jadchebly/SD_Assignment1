@@ -1,6 +1,9 @@
 from fastapi import FastAPI, Depends, HTTPException
 from fastapi.middleware.cors import CORSMiddleware
 from sqlalchemy.orm import Session
+from fastapi.staticfiles import StaticFiles
+from pathlib import Path
+
 
 from . import db, models, schemas, calculations
 
@@ -27,9 +30,10 @@ def get_db():
         session.close()
 
 
-@app.get("/")
+@app.get("/health")
 def health():
     return {"ok": True}
+
 
 # ---- CRUD: Assessments -------------------------------------------------------
 
@@ -95,3 +99,11 @@ def validate_weights(session: Session = Depends(get_db)):
     rows = session.query(models.Assessment).all()
     return calculations.validate_weights(rows)
 
+# ---- Serve the frontend at "/" ----
+# Points to the sibling "frontend" folder no matter where uvicorn is launched from.
+FRONTEND_DIR = Path(__file__).resolve().parents[1] / "frontend"
+app.mount(
+    "/",  # root path
+    StaticFiles(directory=str(FRONTEND_DIR), html=True),
+    name="frontend",
+)

@@ -18,3 +18,6 @@ uvicorn backend.app:app --reload
 
 Open 
 http://127.0.0.1:8000/
+
+Testing:
+run pytest -q
